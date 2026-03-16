@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Menu, X } from 'lucide-react';
@@ -10,6 +11,7 @@ export function Navigation() {
   const navRef = useRef<HTMLElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   if (!navigationConfig.logo) return null;
 
@@ -27,13 +29,8 @@ export function Navigation() {
     };
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
+  const handleNavClick = () => {
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -48,26 +45,30 @@ export function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-8 lg:px-16 flex items-center justify-between">
           {/* Logo */}
-          <a
-            href="#hero"
-            onClick={(e) => handleNavClick(e, '#hero')}
+          <Link
+            to="/"
             className="text-h6 font-medium text-white hover:text-highlight transition-colors duration-300"
           >
             {navigationConfig.logo}
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-10">
             {navigationConfig.items.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-body text-white/70 hover:text-white transition-colors duration-300 relative group"
+                to={item.href}
+                className={`text-body transition-colors duration-300 relative group ${
+                  location.pathname === item.href
+                    ? 'text-white'
+                    : 'text-white/70 hover:text-white'
+                }`}
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-highlight group-hover:w-full transition-all duration-300" />
-              </a>
+                <span className={`absolute -bottom-1 left-0 h-px bg-highlight transition-all duration-300 ${
+                  location.pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'
+                }`} />
+              </Link>
             ))}
           </div>
 
@@ -95,10 +96,10 @@ export function Navigation() {
       >
         <div className="flex flex-col items-center justify-center h-full gap-8">
           {navigationConfig.items.map((item, i) => (
-            <a
+            <Link
               key={item.label}
-              href={item.href}
-              onClick={(e) => handleNavClick(e, item.href)}
+              to={item.href}
+              onClick={handleNavClick}
               className="text-h3 text-white hover:text-highlight transition-colors duration-300"
               style={{
                 transform: isMobileMenuOpen
@@ -109,7 +110,7 @@ export function Navigation() {
               }}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

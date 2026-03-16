@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Instagram, Dribbble, ArrowUpRight } from 'lucide-react';
@@ -148,12 +149,12 @@ export function Footer() {
           {/* Column 1 - Nav links */}
           <div className="space-y-4">
             {footerConfig.navLinks1.map((link, i) => (
-              <a
+              <Link
                 key={link.label}
                 ref={(el) => {
                   linksCol1Ref.current[i] = el;
                 }}
-                href={link.href}
+                to={link.href}
                 className="block text-body text-white/60 hover:text-white transition-colors duration-300 group relative overflow-hidden"
               >
                 <span className="block group-hover:-translate-y-full transition-transform duration-400">
@@ -162,7 +163,7 @@ export function Footer() {
                 <span className="absolute top-full left-0 block group-hover:-translate-y-full transition-transform duration-400 text-white">
                   {link.label}
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -197,15 +198,15 @@ export function Footer() {
 
           {/* Column 3-4 - CTA */}
           <div className="col-span-2 lg:text-right">
-            <a
-              href={footerConfig.ctaHref}
+            <Link
+              to={footerConfig.ctaHref}
               className="inline-flex items-center gap-3 text-h5 lg:text-h4 text-white font-medium group hover:text-highlight transition-colors duration-300"
             >
               {footerConfig.ctaText}
               <span className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:border-highlight group-hover:shadow-[0_0_15px_var(--highlight)] transition-all duration-300">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
-            </a>
+            </Link>
           </div>
         </div>
 

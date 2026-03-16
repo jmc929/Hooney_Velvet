@@ -31,12 +31,12 @@ export interface NavigationConfig {
 export const navigationConfig: NavigationConfig = {
   logo: "HOONEY VELVET",
   items: [
-    { label: "Colecciones", href: "#works" },
-    { label: "Nosotros", href: "#about" },
-    { label: "Experiencias", href: "#services" },
-    { label: "Testimonios", href: "#testimonials" },
-    { label: "Blog", href: "#blog" },
-    { label: "Contacto", href: "#contact" },
+    { label: "Colecciones", href: "/colecciones" },
+    { label: "Nosotros", href: "/nosotros" },
+    { label: "Experiencias", href: "/experiencias" },
+    { label: "Testimonios", href: "/testimonios" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contacto", href: "/contacto" },
   ],
 };
 
@@ -456,10 +456,10 @@ export const footerConfig: FooterConfig = {
   marqueeText: "Despierta Tus Sentidos",
   marqueeHighlightChars: ["S"],
   navLinks1: [
-    { label: "Inicio", href: "#hero" },
-    { label: "Colecciones", href: "#works" },
-    { label: "Nosotros", href: "#about" },
-    { label: "Experiencias", href: "#services" },
+    { label: "Inicio", href: "/" },
+    { label: "Colecciones", href: "/colecciones" },
+    { label: "Nosotros", href: "/nosotros" },
+    { label: "Experiencias", href: "/experiencias" },
   ],
   navLinks2: [
     { label: "Instagram", href: "#", icon: "Instagram" },
@@ -467,7 +467,7 @@ export const footerConfig: FooterConfig = {
     { label: "TikTok", href: "#" },
   ],
   ctaText: "Contáctanos",
-  ctaHref: "#contact",
+  ctaHref: "/contacto",
   copyright: "© 2025 Hooney Velvet. Todos los derechos reservados.",
   tagline: "El arte del placer, en cada detalle.",
 };
