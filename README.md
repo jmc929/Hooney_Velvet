@@ -1,3 +1,33 @@
+# Hooney Velvet
+
+## Estructura del proyecto
+
+```
+hooney_velvet/
+  front/    # SPA React + TypeScript + Vite
+  back/     # API Node.js + Express + TypeScript
+  README.md
+```
+
+### Front — comandos
+
+```bash
+cd front
+npm install
+npm run dev      # http://localhost:5173
+npm run build
+```
+
+### Back — comandos
+
+```bash
+cd back
+npm install
+npm run dev      # http://localhost:3001
+```
+
+---
+
 # Photographer Style Template
 
 A high-end, dark-themed single-page website template with dramatic animations, built for photographers, creative studios, and visual artists. Features GSAP-powered scroll animations, 3D transforms, particle effects, custom cursor, and a noise texture overlay.
